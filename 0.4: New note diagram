@@ -1,0 +1,41 @@
+sequenceDiagram
+    participant browser
+    participant server
+    participant database
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    activate server
+    server-->>browser: HTML document
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate server
+    server-->>browser: the css file
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    activate server
+    server-->>browser: the JavaScript file
+    deactivate server
+
+    Note right of browser: The browser starts executing the JavaScript code
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/notes (New note data)
+    activate server
+    server-->>database: Save new note
+    activate database
+    database-->>server: Confirmation
+    deactivate database
+    server-->>browser: Success message
+    deactivate server
+
+    Note right of browser: The browser updates the UI with the new note
+
+
+/*User types text into the text field.
+User clicks the Save button.
+Browser sends a POST request to the server with the note content.
+Server receives the POST request and processes it.
+Server saves the new note to the database.
+Server sends a response back to the browser indicating success or failure.
+Browser updates the page with the new note or displays an error message.*/

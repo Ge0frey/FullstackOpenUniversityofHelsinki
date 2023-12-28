@@ -1,0 +1,38 @@
+sequenceDiagram
+    participant browser
+    participant spa
+    participant server
+    participant database
+
+    browser->>spa: Navigate to https://studies.cs.helsinki.fi/exampleapp/spa
+    activate spa
+    spa->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+    activate server
+    server-->>spa: SPA HTML, CSS, JS
+    deactivate server
+    deactivate spa
+
+    Note right of browser: SPA loads
+
+    browser->>spa: Create new note (Write and Save)
+    activate spa
+    spa->>server: POST https://studies.cs.helsinki.fi/exampleapp/spa/notes (New note data)
+    activate server
+    server-->>database: Save new note
+    activate database
+    database-->>server: Confirmation
+    deactivate database
+    server-->>spa: Success message
+    deactivate server
+    deactivate spa
+
+    Note right of browser: SPA updates the UI with the new note
+
+
+User types text into the text field.
+User clicks the Save button.
+JavaScript code in the browser sends a POST request to the server with the note content (using AJAX).
+Server receives the POST request and processes it.
+Server saves the new note to the database.
+Server sends a JSON response back to the browser indicating success or failure.
+JavaScript code in the browser updates the UI with the new note without reloading the entire page.

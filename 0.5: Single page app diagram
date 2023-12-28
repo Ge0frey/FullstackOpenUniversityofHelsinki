@@ -1,0 +1,5 @@
+graph TD
+    A[User] -->|1. Requests| B(SPA at https://studies.cs.helsinki.fi/exampleapp/spa)
+    B -->|2. Loads| C{Display Notes}
+    C -->|3. Interacts| D(Interact with Notes)
+    D -->|4. Updates| C
