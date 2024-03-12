@@ -1,0 +1,20 @@
+sequenceDiagram
+    participant browser
+    participant spa (Single Page App)
+    participant server
+    participant database
+
+    browser->>spa: User interacts with SPA
+    activate spa
+    spa-->>server: API request to create new note
+    activate server
+    server-->>database: Save new note data
+    activate database
+    database--x server: Data saved
+    deactivate database
+    server-->>spa: HTTP 201 Created with JSON response
+    deactivate server
+    spa-->>browser: Update UI with new note
+    deactivate spa
+
+    Note right of browser: The SPA updates the UI dynamically without page reload.
