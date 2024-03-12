@@ -1,0 +1,22 @@
+sequenceDiagram
+    participant browser
+    participant server
+    participant database
+
+    browser->>server: User loads single-page app (SPA)
+    activate server
+    server-->>browser: HTML, CSS, and JS files
+    deactivate server
+
+    Note right of browser: The SPA is loaded, and the user interacts with the page.
+
+    browser->>server: User creates a new note
+    activate server
+    server-->>database: Save new note data
+    activate database
+    database--x server: Data saved
+    deactivate database
+    server-->>browser: HTTP 201 Created with JSON response
+    deactivate server
+
+    Note right of browser: The SPA updates the UI to display the new note without page reload.
