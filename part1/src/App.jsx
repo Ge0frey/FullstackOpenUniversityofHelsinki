@@ -1,7 +1,14 @@
+const Hello = () => {
+  <div>
+    <p>Hello world</p>
+  </div>
+}
+
 const App = () => {
   return (
     <div>
-      <p>Hello world</p>
+      <h1>GREETINGS</h1>
+      <Hello />
     </div>
   )
 }
