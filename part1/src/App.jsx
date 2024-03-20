@@ -1,23 +1,16 @@
-const Hello = ({name, age}) => {
-  //console.log(props);
-  return (
-    <div>
-      <p>My name is {name} and I am {age} years old</p>
-    </div>  
-  )
-}
-
 const App = () => {
-  const name = "peter";
-  const age = 25;
+  const friends = [
+    {name: "Geofrey", age: 22},
+    {name: "James", age: 25}
+  ]
+  console.log(friends)
 
   return (
-    <div>
-      <h1>GREETINGS</h1>
-      <Hello name = "Geofrey" age = "20"/>
-      <Hello name = {name} age = {age}/>
-    </div>
+    <>
+      <p>My name is {friends[0].name} and I am {friends[0].age} years old.</p>
+      <p>My name is {friends[1].name} and I am {friends[1].age} years old.</p>
+    </>
   )
 }
 
-export default App
+export default App;
