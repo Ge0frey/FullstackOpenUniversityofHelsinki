@@ -1,8 +1,8 @@
-const Hello = (props) => {
-  console.log(props);
+const Hello = ({name, age}) => {
+  //console.log(props);
   return (
     <div>
-      <p>Hello {props.name} and I am {props.age} years old</p>
+      <p>My name is {name} and I am {age} years old</p>
     </div>  
   )
 }
